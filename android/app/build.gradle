@@ -150,6 +150,9 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
         }
+        debug {
+            signingConfig signingConfigs.release
+        }
     }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
@@ -174,6 +177,8 @@ repositories {
 }
 
 dependencies {
+    compile project(':react-native-fbsdk')
+    compile project(':react-native-iap')
     compile project(':react-native-open-settings')
     implementation project(':react-native-android-open-settings')
     implementation project(':tipsi-twitter')
