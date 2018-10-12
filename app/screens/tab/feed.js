@@ -156,22 +156,31 @@ class Feed extends Component {
     this.panResponder = PanResponder.create({
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => {
         const { dy } = gestureState;
-        if (this.state.yPos <= 0 && dy > 4) this.feedList.setNativeProps({ scrollEnabled: false });
+        if (this.state.yPos <= 0 && dy > 4) {
+          this.feedList.setNativeProps({ scrollEnabled: false });
+        } else {
+          this.feedList.setNativeProps({ scrollEnabled: true });
+        }
+
         return this.state.yPos <= 0 && dy > 4;
       },
 
       onPanResponderRelease: (evt, { dy, vy }) => {
-        let duration = 300;
-        if (dy < 30) {
-          duration = Math.abs(dy * 10);
-        }
+        console.log('release +++++++++++++++++++');
+
+        const duration = Math.abs(dy * vy * 10);
+        // if (dy < 30) {
+        //   duration = Math.abs(dy * 10);
+        // }
+        // this.feedList.setNativeProps({ scrollEnabled: true });
+
         if (dy > 150) {
           if (vy <= 0) {
             this.setFeedView(duration);
           } else {
             this.setMapView(duration);
           }
-          this.feedList.setNativeProps({ scrollEnabled: true });
+          // this.feedList.setNativeProps({ scrollEnabled: true });
           return null;
         }
 
@@ -181,7 +190,7 @@ class Feed extends Component {
           this.setFeedView(duration);
         }
 
-        this.feedList.setNativeProps({ scrollEnabled: true });
+        // this.feedList.setNativeProps({ scrollEnabled: true });
         return null;
       },
 
@@ -190,10 +199,12 @@ class Feed extends Component {
       },
 
       onPanResponderTerminate: (evt, { dy, vy }) => {
+        console.log('terminate -------------------');
         let duration = 300;
         if (dy < 150) {
           duration = Math.abs(dy * 2);
         }
+
         if (dy > 150) {
           if (vy <= 0) {
             this.setFeedView(duration);
@@ -399,14 +410,18 @@ class Feed extends Component {
 
     this.feedWraper.setNativeProps({ top: 0 });
 
+
+    // if (Platform.OS === 'android') {
+    //   this.setState({ mapView: false });
+    // }
+
     if (Platform.OS === 'android') {
-      this.setState({ mapView: false });
+      setTimeout(() => this.setState({ mapView: false }), 600);
     }
   }
 
   setFeedWrapperOffset = (offset) => {
     if (offset > 0) {
-      LayoutAnimation.configureNext(LayoutAnimationconfig);
       this.feedWraper.setNativeProps({ top: offset });
     }
   }
@@ -742,11 +757,11 @@ class Feed extends Component {
     const { navigation } = this.props;
     return (
       <Wrapper bgColor={Colors.background.mutedBlue}>
-        <MapView
+        {/* <MapView
           fullView={this.state.mapView}
           setFeedView={() => this.setFeedView(300)}
           navigation={navigation}
-        />
+        /> */}
         <View
           style={{ flex: 1 }}
           ref={(ref) => { this.feedWraper = ref; }}
