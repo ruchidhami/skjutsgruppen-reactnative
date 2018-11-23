@@ -111,11 +111,14 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId "nu.skjutsgruppen.skjutsgruppen"
         minSdkVersion 16
         targetSdkVersion 28
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
         versionCode 27
         versionName "1.1.2"
         ndk {
@@ -174,6 +177,8 @@ repositories {
 }
 
 dependencies {
+    compile project(':react-native-date-picker')
+    compile project(':react-native-blur')
     compile project(':react-native-open-settings')
     implementation project(':react-native-android-open-settings')
     implementation project(':tipsi-twitter')

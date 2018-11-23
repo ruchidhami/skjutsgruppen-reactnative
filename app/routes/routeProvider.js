@@ -190,7 +190,7 @@ export const Routes = {
 
 export const AppNavigator = StackNavigator(Routes,
   {
-    initialRouteName: 'Splash',
+    initialRouteName: 'Test',
   },
 );
 
