@@ -4276,6 +4276,12 @@ react-native-animatable@^1.2.3, react-native-animatable@^1.2.4:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-blur@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-3.2.2.tgz#5bfb50638d148982c9560436554ed01d77d6d07d"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-calendars@^1.17.1:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.17.1.tgz#f971139911df7de4a08e82ca6cd7db2dd9c96d2a"
@@ -4327,9 +4333,9 @@ react-native-facebook-login@^1.6.0:
   dependencies:
     itypeof "^1.1.2"
 
-react-native-fbsdk:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.7.0.tgz#263dfe5845205de7b80efb0f18ed5c1ded025291"
+react-native-fbsdk@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.8.0.tgz#4ee95ebb7be4b00fa9f871ca594f068c9782c7de"
   dependencies:
     adm-zip "^0.4.7"
     fastfall "^1.5.1"
