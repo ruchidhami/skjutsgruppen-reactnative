@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Animated, StyleSheet, View, Image, Dimensions } from 'react-native';
+import { Animated, StyleSheet, View, Image, Dimensions, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation } from 'react-navigation';
@@ -54,6 +54,15 @@ const styles = StyleSheet.create({
     width: 48,
     borderRadius: 24,
     overflow: 'hidden',
+  },
+  shareIconPosition: {
+    marginRight: 16,
+    ...Platform.select({
+      ios: {
+        right: 16,
+        top: -4,
+      }
+    })
   },
   icon: {
     height: 48,
@@ -133,7 +142,7 @@ class TripToolBar extends PureComponent {
     }
 
     if (rightComponent) {
-      return <View style={{ marginRight: 16 }}>{rightComponent()}</View>;
+      return <View style={styles.shareIconPosition}>{rightComponent()}</View>;
     }
 
     return <View style={styles.spacer} />;
